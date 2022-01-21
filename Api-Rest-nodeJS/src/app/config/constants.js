@@ -2,4 +2,11 @@ const TABLES={
         cursos: 'cursos',
         usuarios: 'users'
 };
-module.exports = TABLES;
+const SECRET_KEY = process.env.SECRET || 'cursosapi';
+const DATABASE = {
+        host: process.env.HOST,
+        user: process.env.USER_DATABASE,
+        password: process.env.PASSWORD,
+        name: process.env.DATABASE
+}
+module.exports = {TABLES,SECRET_KEY,DATABASE};
