@@ -19,8 +19,8 @@ cursoController.list = (req, res) => {
 cursoController.item = (req,res) => {
   const { id } = req.params;
     mysqlOperations.getItem(
-        id,
-        {table:tables.cursos,field:'cursosID'},
+        [id],
+        {table:tables.cursos,field:' cursosID = ? '},
         (err,rows)=>{
             if(!err){
                 res.json(rows);
@@ -49,7 +49,6 @@ cursoController.update = (req, res) => {
   const query = `
   CALL cursoAddEdit(?,?,?,?,?);
 `;
-console.log(data);
   mysqlOperations.updateItem(data,query,(err,rows)=>{
         if(!err){
           res.json({ status: "Curso Actualizado" });

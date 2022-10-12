@@ -1,4 +1,4 @@
-const TABLES={
+const TABLES = {
         cursos: 'cursos',
         usuarios: 'users'
 };

@@ -9,15 +9,24 @@ mysqlOperations.getList = (variables, setRes) => {
     }
   );
 };
-mysqlOperations.getItem = (id, variables, setRes) => {
+mysqlOperations.getItem = (data, variables, setRes) => {
   mysqlConnection.query(
-    `SELECT * FROM ${variables.table} WHERE ${variables.field}= ?`,
-    [id],
+    `SELECT * FROM ${variables.table} WHERE ${variables.field}`,
+    [...Object.values(data)],
     (err, rows, fields) => {
       setRes(err, rows);
     }
   );
 };
+mysqlOperations.storeProcedure = (data,query,setRes) => {
+  mysqlConnection.query(
+    query,
+    [...Object.values(data)],
+    (err, rows, fields) => {
+      setRes(err, rows);
+    }
+  );
+}
 mysqlOperations.addItem = (data, query, setRes) => {
   mysqlConnection.query(
     query,
